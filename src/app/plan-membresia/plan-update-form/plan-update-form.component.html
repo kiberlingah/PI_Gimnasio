@@ -1,0 +1,33 @@
+<div class="container p-4" >
+  <h3 class="text-center mt-1 mb-2"> Actualizar Datos de <br> Plan de Membresía</h3>
+  <form [formGroup]="putplansform" (ngSubmit)="updatePlans()">
+      <div class="row modalpad">
+          <div class="col-12">
+              <div class="row">
+                  <div class="col-12 mb-2">
+                      <label class="label-control" for="nombreplan">Nombre de plan de membresía</label>
+                      <input type="text" class="form-control" formControlName="nombreplan" required/>
+                  </div>
+
+                  <div class="col-sm-5 col-md-6">
+                      <label class="label-control" for="tiempo">Duración (Días)</label>
+                      <input type="number" class="form-control" formControlName="tiempo"  required/>
+                  </div>
+                  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+                    <label class="label-control" for="precio">Precio (S/.)</label>
+                    <input type="number" class="form-control" formControlName="precio"  required/>
+                  </div>
+
+                  <div class="col-12 mb-3 mt-2">
+                      <label class="label-control" for="url_img">Imagen (Enlace de imagen)</label>
+                      <input type="text" class="form-control" formControlName="url_img" placeholder="https://example.com/.../.png" required/>
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-warning">Actualizar</button>
+              <a (click)="closeModal()" class="btn btn-light ml-2">Cancelar</a>
+          </div>
+
+      </div>
+
+  </form>
+</div>

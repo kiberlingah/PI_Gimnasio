@@ -1,0 +1,100 @@
+<div class="container" style="min-height: 520px;">
+    <h3 class="text-center mt-5 mb-4">Registrar Nuevo Miembro</h3>
+    <form  [formGroup]="postmiembroform" (ngSubmit)="createMiembro()">
+      <div class="row" style="place-content: center;">
+        <div class="col-sm-10">
+          <div class="row">
+            <!-- Campos de Angular -->
+            <div class="col-5 mb-3">
+              <label class="label-control" for="nombre">Nombre(s)</label>
+              <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese su Nombre"
+              [ngClass]="{ 'is-invalid': submitted && postmiembroform.get('nombre')?.invalid && postmiembroform.get('nombre')?.touched,
+               'is-valid': submitted && postmiembroform.get('nombre')?.valid && postmiembroform.get('nombre')?.touched }"required />
+               <div *ngIf="submitted && postmiembroform.get('nombre')?.hasError('required')" class="text-danger">
+                Se Requiere Nombre
+              </div>
+            </div>
+
+            <div class="col-5 mb-3">
+              <label class="label-control" for="apellido">Apellido(s)</label>
+              <input type="text" class="form-control" formControlName="apellido" placeholder="Ingrese sus apellido" required
+              [ngClass]="{ 'is-invalid': submitted && postmiembroform.get('apellido')?.invalid && postmiembroform.get('apellido')?.touched,
+               'is-valid': submitted && postmiembroform.get('apellido')?.valid && postmiembroform.get('apellido')?.touched }" />
+               <div *ngIf="submitted && postmiembroform.get('apellido')?.hasError('required')" class="text-danger">
+                Se Requiere Apellidos
+              </div>
+            </div>
+
+            <div class="col-2 mb-3">
+              <label class="label-control" for="edad">Edad</label>
+              <input type="number" class="form-control" formControlName="edad" min="0" required
+              [ngClass]="{ 'is-invalid': submitted && postmiembroform.get('edad')?.invalid && postmiembroform.get('edad')?.touched,
+               'is-valid': submitted && postmiembroform.get('edad')?.valid && postmiembroform.get('edad')?.touched }"/>
+               <div *ngIf="submitted && postmiembroform.get('edad')?.hasError('required')" class="text-danger">
+                Se Requiere Edad
+              </div>
+            </div>
+
+            <div class="col-5 mb-3">
+              <label class="label-control" for="correoelectronico">Correo Electronico</label>
+              <input type="text" class="form-control" formControlName="correoelectronico" placeholder="Ingrese su correo" required
+              [ngClass]="{ 'is-invalid': submitted && postmiembroform.get('correoelectronico')?.invalid && postmiembroform.get('correoelectronico')?.touched,
+               'is-valid': submitted && postmiembroform.get('correoelectronico')?.valid && postmiembroform.get('correoelectronico')?.touched }"/>
+              <div *ngIf="submitted && postmiembroform.get('correoelectronico')?.hasError('required')" class="text-danger">
+                Se Requiere Edad
+              </div>
+            </div>
+
+            <div class="col-4 mb-3">
+              <label class="label-control" for="celular">Celular</label>
+              <input type="text" class="form-control" formControlName="celular" placeholder="Ingrese su Telefono" required
+              [ngClass]="{ 'is-invalid': submitted && postmiembroform.get('celular')?.invalid && postmiembroform.get('celular')?.touched,
+               'is-valid': submitted && postmiembroform.get('celular')?.valid && postmiembroform.get('celular')?.touched }"/>
+               <div *ngIf="submitted && postmiembroform.get('celular')?.hasError('required')" class="text-danger">
+                Se Requiere Celuar
+              </div>
+            </div>
+
+            <div class="col-3 mb-3">
+              <label class="label-control" for="sexo">Sexo</label>
+              <select class="form-select" formControlName="sexo" required>
+                <option value="">Seleccione</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+                <option value="B">Binario</option>
+              </select>
+            </div>
+
+            <div class="col-5 mb-3">
+              <label class="label-control" for="tipodocumento">Tipo de Documento</label>
+              <select class="form-select" formControlName="tipodocumento" required>
+                <option value="">Seleccione...</option>
+                <option [value]="item.tipodocumento_id" *ngFor="let item of listdocuments">{{item.descripcion}}</option>
+              </select>
+            </div>
+
+            <div class="col-7 mb-3">
+              <label class="label-control" for="nrodoc">Número de Documento</label>
+              <input type="number" class="form-control" formControlName="nrodoc" style="width: 55.3%;" placeholder="Ingrese su Documento" required
+              [ngClass]="{ 'is-invalid': submitted && postmiembroform.get('nrodoc')?.invalid && postmiembroform.get('nrodoc')?.touched,
+               'is-valid': submitted && postmiembroform.get('nrodoc')?.valid && postmiembroform.get('nrodoc')?.touched }"/>
+              <div *ngIf="submitted && postmiembroform.get('nrodoc')?.hasError('required')" class="text-danger">
+                Se Requiere Número de Documento
+              </div>
+          </div>
+
+            <div class="col-9 mb-2">
+              <label class="label-control" for="razonsocial">Razón Social (*Sólo si el tipo de documento es RUC)</label>
+              <input type="text" class="form-control" formControlName="razonsocial" placeholder="Ingrese su Razon Social" />
+
+          </div>
+
+            <div class="col-12 mb-5">
+              <button type="submit" class="btn btn-warning mt-4">Guardar</button>
+              <a  class="btn btn-secondary mx-3 mt-4" (click)="close()">Regresar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

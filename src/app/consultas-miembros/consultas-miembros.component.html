@@ -1,0 +1,67 @@
+<div class="fondovm">
+
+  <div class="container contentspace">
+    <h3 class="text-center mb-4"> Consultar Miembro</h3>
+
+    <div class="col-lg-10">
+      <form (submit)="consultarMiembro()">
+        <div class="row align-items-start">
+          <div class="col-3"></div>
+
+          <div class="row align-items-center">
+            <div class="col">
+              <label class="label-control" for="I">N° de Documento:</label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Ingrese Numero de Documento" name="nrodoc"
+                id="nrodoc" [(ngModel)]="nroDocumento" width="100px" />
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i>
+                Buscar</button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+      <table class="table mt-4">
+        <thead>
+          <tr class="table-dark">
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Plan</th>
+            <th>Fecha Inicial</th>
+            <th>Fecha Final</th>
+            <th>Estado de Membresía</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let miembro of miembrosConsulta">
+            <td>{{ miembro.miembroId }}</td>
+            <td>{{ miembro.nombre }}</td>
+            <td>{{ miembro.apellido }}</td>
+            <td>{{ miembro.nombreplan }}</td>
+            <td>{{ miembro.fechaInicio }}</td>
+            <td>{{ miembro.fechaVencimiento }}</td>
+            <td><ng-container *ngIf="miembro.estado === 1">
+                Activo
+              </ng-container>
+              <ng-container *ngIf="miembro.estado !== 1">
+                Inactivo
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <footer>
+    <div class="footerclassp bg-dark p-4 mt-5">
+      <footer class="container text-light ">
+        &copy;2024 Proyecto Integrador - Grupo05 - Derechos reservados
+      </footer>
+    </div>
+  </footer>
+</div>

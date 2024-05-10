@@ -1,0 +1,108 @@
+<div *ngIf="userLoginOn">
+  <div class="classnavbar1">
+    <nav class="container navbar navbar-expand-lg" data-bs-theme="dark">
+      <div class="container-fluid">
+        <!--<a class="navbar-brand" href="#">Ejemplo Login</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link active" routerLink="/inicio">Portfolio</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link active" routerLink="/miembro">Miembro</a>
+			  </li>
+			  <li *ngIf="!userLoginOn" class="nav-item">
+				<a class="nav-link" routerLink="/iniciar-sesion">Iniciar Sesión</a>
+			  </li>
+			  <li *ngIf="userLoginOn" class="nav-item">
+				<a class="nav-link" (click)="logout()"  routerLink="/inicio">Cerrar Sesión</a>
+			  </li>
+			</ul>
+		  </div>-->
+        <div>
+          <a routerLink="/menu">
+            <img [src]="'assets/img/' + 'logoPrincipal1.png'">
+          </a>
+        </div>
+
+        <div class="collapse justify-content-end navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown me-2">
+              <a class="nav-link" routerLink="/menu">Inicio</a>
+            </li>
+            <li class="nav-item dropdown me-2" (mouseenter)="showMenu()" (mouseleave)="hideMenu()">
+              <a class="nav-link" href="#" (click)="toggleMenu($event)">Mantenimiento</a>
+              <ul class="dropdown-menu">
+                <!--<li><a class="dropdown-item" href="/usuarioListado">Usuarios</a></li>-->
+                <li><a class="dropdown-item" routerLink="/miembro">Miembros</a></li>
+                <li><a class="dropdown-item" routerLink="/planesmembresia">Planes de Membresía</a></li>
+                <li><a class="dropdown-item" routerLink="/usuarios">Usuarios</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown me-2" (mouseenter)="showMenu()" (mouseleave)="hideMenu()">
+              <a class="nav-link" href="#" (click)="toggleMenu($event)">Transacción</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/venta-membresia">Venta de Membresia</a></li>
+              </ul>
+            </li>
+            <!--<li class="nav-item dropdown me-2"(mouseenter)="showMenu()" (mouseleave)="hideMenu()">
+							<a class="nav-link" href="#"(click)="toggleMenu($event)" >Reportes</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+							</ul>
+						</li>-->
+            <li class="nav-item dropdown me-2" (mouseenter)="showMenu()" (mouseleave)="hideMenu()">
+              <a class="nav-link" href="#" (click)="toggleMenu($event)">
+                Consultas
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/consulta-p">Consultar Plan de Membresía</a></li>
+                <li><a class="dropdown-item" routerLink="/consulta-m">Consultar Planes de Miembros</a></li>
+              </ul>
+            </li>
+            <li class="nav-item me-1">
+              <a class="nav-link" (click)="logout()" routerLink="/inicio"><i class="fa fa-power-off"
+                  aria-hidden="true"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!--<div *ngIf="userLoginOff">
+    <div class="classnavbar2">
+      <nav class="container navbar navbar-dark navbar-expand-lg" data-bs-theme="dark">
+        <div class="container-fluid">
+          <div>
+            <a>
+              <img [src]="'assets/img/' + 'logoPrincipal1.png'">
+            </a>
+          </div>
+          <div class="collapse justify-content-end navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown me-2">
+                <a class="nav-link" href="#home">Inicio</a>
+              </li>
+              <li class="nav-item dropdown me-2" >
+                <a class="nav-link" href="#aboutus">Conócenos</a>
+              </li>
+              <li class="nav-item dropdown me-2" >
+                <a class="nav-link" href="#service">Servicios</a>
+              </li>
+
+              <li class="nav-item dropdown me-2">
+                <a class="nav-link" href="#contact">Contáctenos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+  </div>-->

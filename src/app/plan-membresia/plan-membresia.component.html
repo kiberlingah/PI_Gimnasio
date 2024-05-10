@@ -1,0 +1,42 @@
+<div class="submit-form container">
+
+  <h3 class="text-center mt-4 mb-4"> Listado de Planes de Membresía</h3>
+
+  <div class="cuerpo">
+
+    <div *ngIf="!submitted">
+
+        <a class="btn btn-warning mt-4 mb-4" (click)="createModal()" ata-bs-toggle="modal" data-bs>Nuevo Plan de Membresia</a>
+
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr class="table-dark">
+          <th>Código</th>
+          <th>Nombre de Plan</th>
+          <th>Duración</th>
+          <th>Precio</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listplanes">
+          <td>{{item.planesId}}</td>
+          <td>{{item.nombreplan}}</td>
+          <td>{{item.tiempo}} días</td>
+          <td> S/. {{item.precio}}</td>
+          <td class="pl-2"><img src="{{item.url_img}}" alt="Foto del servicio" width="44" height="34"></td>
+          <td>
+            <button type="button" class="btn btn-warning" (click)="updateModal(item)" ata-bs-toggle="modal"
+              data-bs>Editar
+            </button>
+            &nbsp;
+            <button type="button" class="btn btn-danger" (click)="confirmDelete(item)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

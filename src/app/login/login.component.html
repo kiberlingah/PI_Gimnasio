@@ -1,0 +1,49 @@
+<body>
+
+</body>
+<div class="cuerpo">
+
+
+<div *ngIf="!userLoginOn" class="container">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="background">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <form [formGroup]="loginForm" class="border p-4 rounded">
+            <p class="text-danger">{{loginError}}</p>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input formControlName="username" type="email" class="form-control"placeholder="Email"
+                 id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                    <div *ngIf="email.errors?.['required']">
+                        El Email es requerido.
+                    </div>
+                    <div *ngIf="email.errors?.['email']">
+                        El Email debe tener un formato válido.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input formControlName="password" type="password"placeholder="Password"
+                 class="form-control" id="exampleInputPassword1">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                    <div *ngIf="password.errors?.['required']">
+                        El Password es requerido.
+                    </div>
+                </div>
+            </div>
+            <button type="submit" (click)="login()" >Iniciar Sesión</button>
+            <div class="social">
+                <div class="go"><i class="fab fa-google"></i>  Google</div>
+                <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+            </div>
+            <!--<div>
+                <button (click)="signup()">Registrar Usuario</button>
+            </div>-->
+        </form>
+    </div>
+</div>
+</div>

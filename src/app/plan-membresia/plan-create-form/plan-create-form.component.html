@@ -1,0 +1,73 @@
+<div class="container p-4">
+  <h3 class="text-center mt-1 mb-2"> Registrar Plan de Membresía</h3>
+  <form [formGroup]="postplansform" (ngSubmit)="createPlanes()">
+    <div class="row modalpad">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 mb-2">
+            <label class="label-control" for="nombreplan">Nombre de nuevo plan</label>
+            <input type="text" class="form-control" formControlName="nombreplan"
+              placeholder="Ingrese su nombre de plan " [ngClass]="{
+                            'is-invalid': submitted && postplansform.get('nombreplan')?.touched && postplansform.get('nombreplan')?.invalid,
+                            'is-valid': postplansform.get('nombreplan')?.valid && postplansform.get('nombreplan')?.touched
+                        }" required />
+            <div *ngIf="submitted && postplansform.get('nombreplan')?.hasError('required')" class="text-danger">
+              El nombre del plan es requerido
+            </div>
+            <div *ngIf="submitted && postplansform.get('nombreplan')?.hasError('minlength')" class="text-danger">
+              El nombre del plan debe tener al menos 4 caracteres
+            </div>
+          </div>
+
+          <div class="col-sm-5 col-md-6">
+            <label class="label-control" for="tiempo">Duración (Días)</label>
+            <input type="text" class="form-control" formControlName="tiempo" placeholder="30" [ngClass]="{
+                'is-invalid': submitted && postplansform.get('tiempo')?.touched && postplansform.get('tiempo')?.invalid,
+                'is-valid': postplansform.get('tiempo')?.valid && postplansform.get('tiempo')?.touched
+            }" required />
+            <div *ngIf="submitted && postplansform.get('tiempo')?.hasError('required')" class="text-danger">
+                Duración es requerida
+            </div>
+            <div *ngIf="submitted && postplansform.get('tiempo')?.hasError('pattern')" class="text-danger">
+                El valor debe ser numérico
+            </div>
+        </div>
+        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+          <label class="label-control" for="precio">Precio (S/.)</label>
+          <input type="text" class="form-control" formControlName="precio" placeholder="0.00"
+              [ngClass]="{
+                  'is-invalid': submitted && postplansform.get('precio')?.touched && postplansform.get('precio')?.invalid,
+                  'is-valid': postplansform.get('precio')?.valid && postplansform.get('precio')?.touched
+              }" required />
+          <div *ngIf="submitted && postplansform.get('precio')?.hasError('required')" class="text-danger">
+              Precio es requerido
+          </div>
+          <div *ngIf="submitted && postplansform.get('precio')?.hasError('pattern')" class="text-danger">
+              El valor debe ser numérico
+          </div>
+      </div>
+
+      <div class="col-12 mb-3 mt-2">
+          <label class="label-control" for="url_img">Imagen (Enlace de imagen)</label>
+          <input type="text" class="form-control" formControlName="url_img"
+              placeholder="https://example.com/.../.png"
+              [ngClass]="{
+                  'is-invalid': submitted && postplansform.get('url_img')?.invalid && postplansform.get('url_img')?.touched,
+                  'is-valid': submitted && postplansform.get('url_img')?.valid && postplansform.get('url_img')?.touched
+              }" required />
+          <div *ngIf="submitted && postplansform.get('url_img')?.hasError('required')" class="text-danger">
+              Enlace de imagen es requerido
+          </div>
+          <div *ngIf="submitted && postplansform.get('url_img')?.hasError('pattern')" class="text-danger">
+              El enlace debe empezar con 'https://'
+          </div>
+      </div>
+        </div>
+        <button type="submit" class="btn btn-warning">Registrar</button>
+        <a (click)="closeModal()" class="btn btn-light ml-2">Cancelar</a>
+      </div>
+
+    </div>
+
+  </form>
+</div>

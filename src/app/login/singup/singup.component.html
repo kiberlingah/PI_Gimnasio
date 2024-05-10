@@ -1,0 +1,82 @@
+<div class="container" style="min-height: 520px;">
+  <h3 class="text-center mt-4 mb-3">Registrar Nuevo Usuario</h3>
+  <form [formGroup]="userForm" (ngSubmit)="signup()">
+    <div class="row" style="place-content: center;">
+      <div class="col-8">
+        <div class="row">
+          <!-- Campos de Angular -->
+          <div class="mb-3">
+            <label class="label-control" for="nombre">Nombre(s)</label>
+            <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese nombre(s)"
+            [ngClass]="{ 'is-invalid': submitted && userForm.get('nombre')?.invalid && userForm.get('nombre')?.touched,
+               'is-valid': submitted && userForm.get('nombre')?.valid && userForm.get('nombre')?.touched }" required />
+            <div *ngIf=" submitted && userForm.get('nombre')?.hasError('required')" class="text-danger">
+              Nombre(s) es requerido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="label-control" for="apellido">Apellido(s)</label>
+            <input type="text" class="form-control" formControlName="apellido" placeholder="Ingrese apellido(s)"
+              [ngClass]="{ 'is-invalid': submitted && userForm.get('apellido')?.invalid && userForm.get('apellido')?.touched,
+               'is-valid': submitted && userForm.get('apellido')?.valid && userForm.get('apellido')?.touched }"
+              required />
+            <div *ngIf="submitted &&   userForm.get('apellido')?.hasError('required')" class="text-danger">
+              Apellido(s) es requerido
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="label-control" for="email">Correo Electrónico</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Ingrese correo electrónico"
+              [ngClass]="{
+                    'is-invalid': submitted && userForm.get('email')?.touched && userForm.get('email')?.invalid,
+                    'is-valid': userForm.get('email')?.valid && userForm.get('email')?.touched && !userForm.get('email')?.hasError('required')
+                }" required />
+            <div *ngIf="submitted && userForm.get('email')?.hasError('required')" class="text-danger">
+              Correo electrónico es requerido
+            </div>
+            <div *ngIf="submitted && userForm.get('email')?.hasError('pattern')" class="text-danger">
+              Formato de correo electrónico inválido
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="label-control" for="username">Usuario</label>
+            <input type="email" class="form-control" formControlName="username" placeholder="Repita correo electrónico"
+              [ngClass]="{
+                    'is-invalid': submitted && userForm.get('username')?.touched && userForm.get('username')?.invalid,
+                    'is-valid': userForm.get('username')?.valid && userForm.get('username')?.touched && !userForm.get('username')?.hasError('required')
+                }" required />
+            <div *ngIf="submitted && userForm.get('username')?.hasError('required')" class="text-danger">
+              Usuario es requerido
+            </div>
+            <div *ngIf="submitted && userForm.get('username')?.hasError('pattern')" class="text-danger">
+              Formato de correo electrónico inválido
+            </div>
+          </div>
+
+
+
+          <div class="mb-3">
+            <label class="label-control" for="password">Contraseña</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Ingrese una contraseña"
+              [ngClass]="{
+                    'is-invalid': submitted && userForm.get('password')?.touched && userForm.get('password')?.invalid,
+                    'is-valid': userForm.get('password')?.valid && userForm.get('password')?.touched
+                }" required />
+            <div *ngIf="submitted && userForm.get('password')?.hasError('required')" class="text-danger">
+              Contraseña es requerida
+            </div>
+            <div *ngIf="submitted && userForm.get('password')?.hasError('pattern')" class="text-danger">
+              La contraseña debe contener al menos 7 caracteres alfanuméricos
+            </div>
+          </div>
+          <div class="col-12 mb-4">
+            <button type="submit" class="btn btn-warning mt-4">Registrar</button>
+            <a class="btn btn-light mx-4 mt-4" (click)="close()">Cancelar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
